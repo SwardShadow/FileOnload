@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>学员信息</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    table, td, th {
+      text-align: center;
+      line-height: 30px;
+      border: 1px solid #CCC;
+    }
+
+    caption {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 960px;
+      margin: 50px auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <caption>学员信息</caption>
+  <tr>
+    <th>姓名</th>
+    <th>性别</th>
+    <th>年龄</th>
+    <th>操作</th>
+  </tr>
+</table>
+<script src="./js/jquery.min.js"></script>
+<!--<script>
+  //从localStorage中读取数据
+  var list = window.localStorage.getItem("list");
+  //字符串数据---对象的方式
+  list = list && JSON.parse(list);
+  //判断这个对象是否转换成功
+  if (list) {
+    //遍历这个对象---
+    //创建--tr和td
+    var html = "";
+    $.each(list, function (key, val) {//key---索引,val---对象
+      html += "<tr>";
+      html += "<td>"+val.name+"</td>";
+      html += "<td>"+val.sex+"</td>";
+      html += "<td>"+val.age+"</td>";
+      html += "<td><a href='javascript:;'>删除</a></td>";
+      html += "</tr>";
+    });
+    //把拼接好的html(多行和多列)加入到table中
+    $("table").html($("table").html()+html);
+  }
+</script>-->
+<script>
+  var list=localStorage.getItem("list");//获取list数据
+  var list=list&&JSON.parse(list);
+  var html="";
+  $.each(list, function (key,val) {//循环list数据
+    html+="<tr>";//创建每行
+    html+="<td>"+val.name+"</td>";
+    html+="<td>"+val.sex+"</td>";
+    html+="<td>"+val.age+"</td>";
+    html+="<td><a javascript:;>删除</a></td>";
+    html+="</tr>";
+  });
+  $("table").html($("table").html()+html);//将数据添加到table中
+
+</script>
+</body>
+</html>
